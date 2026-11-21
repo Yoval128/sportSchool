@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5B2C6F">
+  <title>SportSchool</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="/icon-192.png">
+</head>
+<body>
+
+  <div id="splashScreen" class="pantalla-splash">
+    <h1>SportSchool</h1>
+    <p>Cargando seguimiento deportivo escolar...</p>
+  </div>
+
+  <div id="homeScreen" class="oculto">
+    <header>
+      <h1>SportSchool</h1>
+      <span id="estadoRed" class="estado-badge">En linea</span>
+    </header>
+
+    <main>
+      <section class="acciones-barra">
+        <button type="button" id="btnNotificaciones" class="btn-triada-naranja">Activar Notificaciones</button>
+        <button type="button" id="btnFetchRemoto" class="btn-triada-verde">Consultar Datos Remotos</button>
+      </section>
+      <p id="estadoRemoto" class="texto-auxiliar">Estado remoto: Sin consultar</p>
+
+      <section class="tarjeta">
+        <h2>Indicadores de Desempeno</h2>
+        <div class="indicadores-grid">
+          <div class="indicador-caja">
+            <span id="totalActividades" class="indicador-valor">0</span>
+            <span class="indicador-titulo">Actividades</span>
+          </div>
+          <div class="indicador-caja">
+            <span id="totalTiempo" class="indicador-valor">0 min</span>
+            <span class="indicador-titulo">Tiempo Acumulado</span>
+          </div>
+          <div class="indicador-caja">
+            <span id="totalDistancia" class="indicador-valor">0 km</span>
+            <span class="indicador-titulo">Distancia Recorrida</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tarjeta">
+        <h2>Registro de Estudiantes</h2>
+        <form id="formEstudiante">
+          <label for="nombreEstudiante">Nombre del Estudiante:</label>
+          <input type="text" id="nombreEstudiante" required placeholder="Ej. Carlos Mendoza">
+
+          <label for="grupoEstudiante">Grupo:</label>
+          <input type="text" id="grupoEstudiante" required placeholder="Ej. 4B">
+
+          <label for="disciplinaEstudiante">Disciplina Deportiva:</label>
+          <select id="disciplinaEstudiante" required>
+            <option value="Atletismo">Atletismo</option>
+            <option value="Futbol">Futbol</option>
+            <option value="Basquetbol">Basquetbol</option>
+            <option value="Natacion">Natacion</option>
+          </select>
+
+          <button type="submit" class="btn-primario">Registrar Estudiante</button>
+        </form>
+      </section>
+
+      <section class="tarjeta">
+        <h2>Registro de Actividad</h2>
+        <form id="formActividad">
+          <label for="selectEstudiante">Estudiante:</label>
+          <select id="selectEstudiante" required>
+            <option value="">Seleccione un estudiante</option>
+          </select>
+
+          <label for="fechaActividad">Fecha:</label>
+          <input type="date" id="fechaActividad" required>
+
+          <label for="nombreActividad">Actividad Realizada:</label>
+          <input type="text" id="nombreActividad" required placeholder="Ej. Carrera de resistencia">
+
+          <label for="duracionMin">Duracion (minutos):</label>
+          <input type="number" id="duracionMin" min="1" required placeholder="Ej. 45">
+
+          <label for="distanciaKm">Distancia (kilometros):</label>
+          <input type="number" id="distanciaKm" min="0" step="0.1" required placeholder="Ej. 3.5">
+
+          <label for="observaciones">Observaciones:</label>
+          <textarea id="observaciones" rows="2" placeholder="Notas sobre el rendimiento"></textarea>
+
+          <button type="button" id="btnUbicacion" class="btn-secundario">Registrar Ubicacion GPS (Opcional)</button>
+          <p id="textoUbicacion" class="texto-auxiliar">Ubicacion: No registrada</p>
+
+          <button type="submit" class="btn-primario">Guardar Actividad</button>
+        </form>
+      </section>
+
+      <section class="tarjeta">
+        <h2>Historial Deportivo</h2>
+        <label for="filtroEstudiante">Filtrar por Estudiante:</label>
+        <select id="filtroEstudiante">
+          <option value="todos">Todos los estudiantes</option>
+        </select>
+
+        <ul id="listaHistorial"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
